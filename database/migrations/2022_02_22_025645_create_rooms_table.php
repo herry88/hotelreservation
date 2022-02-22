@@ -15,8 +15,14 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreign('tipe_id')->references('id')->on('tipes')->onDelete('cascade');
-
+            $table->bigInteger('type_id')->unsigned();
+            $table->bigInteger('room_status_id')->unsigned();
+            // $table->foreignId('type_id')->constrained();
+            // $table->foreignId('room_status_id')->constrained();
+            $table->string('number');
+            $table->bigInteger('capacity');
+            $table->double('price');
+            $table->longText('view');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFasilitasRoomsTable extends Migration
+class AddStatusToPayment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateFasilitasRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fasilitas_rooms', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('room_id')->unsigned();
+        Schema::table('payments', function (Blueprint $table) {
+            $table->string('status');
 
-            $table->timestamps();
         });
     }
 
@@ -28,6 +26,8 @@ class CreateFasilitasRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fasilitas_rooms');
+        Schema::table('payment', function (Blueprint $table) {
+            //
+        });
     }
 }

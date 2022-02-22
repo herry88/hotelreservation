@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFasilitasRoomsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateFasilitasRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fasilitas_rooms', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('room_id')->unsigned();
-
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('transaction_id')->constrained();
+            $table->decimal('price',65,2);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateFasilitasRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fasilitas_rooms');
+        Schema::dropIfExists('payments');
     }
 }
