@@ -16,7 +16,7 @@ class CreateFasilitasRoomsTable extends Migration
         Schema::create('fasilitas_rooms', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('room_id')->unsigned();
-
+            $table->foreignId('fasilitas_id')->constrained();
             $table->timestamps();
         });
     }
